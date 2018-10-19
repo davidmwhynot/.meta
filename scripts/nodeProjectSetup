@@ -1,0 +1,31 @@
+#!/bin/bash
+mkdir build
+mkdir src
+mkdir src/db
+mkdir src/db/models
+mkdir src/db/schemas
+mkdir src/db/schemas/archive
+mkdir src/public
+mkdir src/public/js
+mkdir src/public/media
+mkdir src/public/sass
+mkdir src/public/sass/partials
+mkdir src/routes
+mkdir src/views
+mkdir src/views/layouts
+cp ../_meta/code/gulpfile.js ./
+cp ../_meta/code/.gitignore ./
+cp ../_meta/code/scrubsql.js ./build
+cp ../_meta/code/.config ./src/db
+cp ../_meta/code/_config.sql ./src/db
+touch README.md
+touch app.js
+touch .env
+touch src/routes/index.js
+touch src/views/index.handlebars
+touch src/views/layouts/layout.handlebars
+touch src/public/js/main.js
+touch src/public/sass/style.scss
+touch src/public/sass/partials/_mixins.scss
+touch src/public/sass/partials/_variables.scss
+npm init
