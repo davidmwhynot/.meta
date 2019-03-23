@@ -1,0 +1,41 @@
+<?php
+	if (!empty($_SERVER['HTTPS']) && ('on' == $_SERVER['HTTPS'])) {
+		$uri = 'https://';
+	} else {
+		$uri = 'http://';
+	}
+
+	$htdocs = dir("./");
+
+	$files = "{files:[";
+
+	while (false !== ($project = $htdocs->read())) {
+
+		$badPathFlag = ($project === ".") || ($project === "..") || ($project === "/");
+
+		if(!$badPathFlag && is_dir($entry)) {
+
+			$files .= "{name:\"" . $project . "\",";
+
+			$projectDir = dir("./" . $project);
+
+			while (false !== ($entry = $projectDir->read())) {
+
+			}
+
+			$files .= "},";
+
+			$projectDir->close();
+		}
+	}
+
+	$files = substr($files, 0, -1);
+	$files = "]}";
+
+	$htdocs->close();
+
+	$uri .= $_SERVER['HTTP_HOST'];
+	header('Location: ' . $uri . '/.meta/?files=' . urlencode($files));
+	exit;
+?>
+Something is wrong with the XAMPP installation :-(
